@@ -14,9 +14,6 @@ import Icon from "react-native-vector-icons/Feather";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import { Provider as StoreProvider } from "react-redux";
-import {
-  Provider as PaperProvider,
-} from "react-native-paper";
 import store from "./src/reducers/store";
 import { createDrawerNavigator } from "@react-navigation/drawer";
 import DrawerContent from "./src/navigation/DrawerContent";
@@ -33,6 +30,7 @@ import Setting from "./src/pages/settings/Setting";
 import Payment from "./src/pages/payment/Payment";
 import Congrats from "./src/pages/congrats/Congrats";
 import Ratings from "./src/pages/rating/Ratings";
+import { SafeAreaProvider } from "react-native-safe-area-context/src/SafeAreaContext";
 
 
 LogBox.ignoreLogs(["Reanimated 2"]);
@@ -138,7 +136,7 @@ const App: () => Node = () => {
   return (
 
     <StoreProvider store={store}>
-      <PaperProvider>
+      <SafeAreaProvider>
         <NavigationContainer>
           <Stack.Navigator
             initialRouteName="Home"
@@ -175,7 +173,7 @@ const App: () => Node = () => {
                )} */}
           </Stack.Navigator>
         </NavigationContainer>
-      </PaperProvider>
+      </SafeAreaProvider>
     </StoreProvider>
   );
 };
